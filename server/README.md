@@ -9,5 +9,7 @@ First, run the development server:
 ```bash
 yarn
 
+npx tsconfig.json
+
 yarn dev
 ```
