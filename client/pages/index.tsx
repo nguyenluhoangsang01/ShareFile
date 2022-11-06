@@ -55,7 +55,7 @@ const Home: NextPage = () => {
   return (
     <div className="grid place-items-center gap-8 px-4">
       <Head>
-        <title>Share file</title>
+        <title>Share File 👻</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

@@ -1,6 +1,11 @@
 import express from "express";
 import multer from "multer";
-import { downloadFile, getFile, uploadFile } from "../controllers/files";
+import {
+  downloadFile,
+  getFile,
+  sendEmail,
+  uploadFile,
+} from "../controllers/files";
 
 const router = express.Router();
 
@@ -12,5 +17,7 @@ router.post("/upload", upload.single("file"), uploadFile);
 router.get("/:id", getFile);
 
 router.get("/:id/download", downloadFile);
+
+router.post("/email", sendEmail);
 
 export default router;
