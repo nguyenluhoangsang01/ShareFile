@@ -69,7 +69,7 @@ export const getFile = async (
 
     const file = await File.findById(id).select("-__v");
 
-    return sendSuccess(res, "File found", file);
+    return sendSuccess(res, "Ready to save.", file);
   } catch (error) {
     next(error);
   }
