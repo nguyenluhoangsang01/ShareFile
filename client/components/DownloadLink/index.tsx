@@ -22,7 +22,7 @@ const DownloadLink: FunctionComponent<{ downloadPageLink: string }> = ({
     <div className="flex items-center justify-between space-x-6 my-4">
       <a
         href={downloadPageLink}
-        className={`transition break-all hover:underline ${isCopied ? "text-yellow-600" : ""}`}
+        className={`transition text-center break-all hover:underline ${isCopied ? "text-yellow-600" : ""}`}
         target="_blank"
       >
         {downloadPageLink}
