@@ -12,7 +12,7 @@ export const uploadFile = async (
 ) => {
   const { file } = req;
 
-  if (!file) return sendError(res, "No file was uploaded");
+  if (!file) return sendError(res, "No file was uploaded.");
 
   try {
     await cloudinary.uploader
@@ -42,7 +42,7 @@ export const uploadFile = async (
 
         return sendSuccess(
           res,
-          "File uploaded successfully",
+          "File uploaded successfully!",
           {
             id: newFile._id,
             linkDownload: `${process.env.API_BASE_ENDPOINT_CLIENT}/download/${newFile._id}`,

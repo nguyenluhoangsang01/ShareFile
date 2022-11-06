@@ -11,6 +11,10 @@
     @apply text-2xl md:text-3xl font-semibold;
   }
 
+  a {
+    @apply text-xs md:text-sm;
+  }
+
   p {
     @apply text-xs md:text-sm;
   }
