@@ -54,3 +54,22 @@ export const uploadFile = async (
     next(error);
   }
 };
+
+export const getFile = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+
+  try {
+    const isExist = await File.exists({ _id: id });
+    if (!isExist) return sendError(res, "File does not exist.", 404);
+
+    const file = await File.findById(id).select("-__v");
+
+    return sendSuccess(res, "File found", file);
+  } catch (error) {
+    next(error);
+  }
+};
