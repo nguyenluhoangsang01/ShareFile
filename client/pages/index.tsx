@@ -1,9 +1,8 @@
 import axios from "axios";
-import type { NextPage } from "next";
+import { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
-import { FiLoader } from "react-icons/fi";
 import Button from "../components/Button";
 import DownloadLink from "../components/DownloadLink";
 import Dropzone from "../components/Dropzone";
