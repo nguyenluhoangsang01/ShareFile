@@ -1,18 +1,30 @@
 import axios from "axios";
 import { NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import Button from "../components/Button";
 import DownloadLink from "../components/DownloadLink";
 import Dropzone from "../components/Dropzone";
+import EmailForm from "../components/EmailForm";
 import RenderFile from "../components/RenderFile";
+import { UPLOAD_DATA } from "../utils/constants";
 import { sendToast } from "../utils/helpers";
 
 const Home: NextPage = () => {
   const [file, setFile] = useState<any>(null);
   const [data, setData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    // Perform localStorage action
+    const item = localStorage.getItem(UPLOAD_DATA);
+    if (item) {
+      const parsedItem = JSON.parse(item);
+
+      setData(parsedItem);
+    }
+  }, []);
 
   const handleUpload = async () => {
     const formData = new FormData();
@@ -31,6 +43,7 @@ const Home: NextPage = () => {
       });
 
       setData(data);
+      localStorage.setItem(UPLOAD_DATA, JSON.stringify(data));
 
       setIsLoading(false);
 
@@ -49,6 +62,7 @@ const Home: NextPage = () => {
 
   const handleReset = () => {
     setData(null);
+    localStorage.removeItem(UPLOAD_DATA);
     setFile(null);
   };
 
@@ -68,6 +82,18 @@ const Home: NextPage = () => {
 
         {file && <RenderFile file={file} />}
 
+        {data && (
+          <>
+            <p className="text-center text-base w-full md:w-4/5">
+              Great! File is uploaded, share this link with your friend
+            </p>
+
+            <DownloadLink downloadPageLink={data.data.linkDownload} />
+
+            <EmailForm id={data.data.id} />
+          </>
+        )}
+
         {data ? (
           <Button
             isLoading={isLoading}
@@ -83,8 +109,6 @@ const Home: NextPage = () => {
             />
           )
         )}
-
-        {data && <DownloadLink downloadPageLink={data.data.linkDownload} />}
       </div>
     </div>
   );

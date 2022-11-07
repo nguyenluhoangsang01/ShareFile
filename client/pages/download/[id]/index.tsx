@@ -69,7 +69,7 @@ const DownloadFile: NextPage<{ data: Props }> = ({ data }) => {
   return (
     <div>
       <Head>
-        <title>Download</title>
+        <title className="uppercase">{data.data.originalname} - Download</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

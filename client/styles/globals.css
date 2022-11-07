@@ -22,4 +22,8 @@
   em {
     @apply text-xs md:text-sm;
   }
+
+  input {
+    @apply w-full outline-none border-yellow-600 border-2 bg-[#ccc] p-2 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition text-black text-sm rounded-sm;
+  }
 }
