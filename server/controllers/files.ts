@@ -2,6 +2,7 @@ import { v2 as cloudinary } from "cloudinary";
 import { NextFunction, Request, Response } from "express";
 import https from "https";
 import nodemailer from "nodemailer";
+import validator from "validator";
 import File from "../models/File";
 import { IFile } from "../types/File";
 import createEmailTemplate from "../utils/createEmailTemplate";
@@ -105,7 +106,11 @@ export const sendEmail = async (
 
   if (!id) return sendError(res, "File id is required.");
   if (!emailFrom) return sendError(res, "Email from is required.");
+  if (!validator.isEmail(emailFrom))
+    return sendError(res, "Email from is invalid.");
   if (!emailTo) return sendError(res, "Email to is required.");
+  if (!validator.isEmail(emailTo))
+    return sendError(res, "Email to is invalid.");
 
   try {
     const isExist = await File.exists({ _id: id });
@@ -129,7 +134,7 @@ export const sendEmail = async (
     const mailOptions = {
       from: emailFrom, // sender address
       to: emailTo, // list of receivers
-      subject: "File shared with you from Share File 👻", // Subject line
+      subject: "[Share File] File shared with you from Share File 👻", // Subject line
       text: `${emailFrom} shared a file with you`, // plain text body
       html: createEmailTemplate(
         emailFrom,

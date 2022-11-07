@@ -8,9 +8,6 @@ const createEmailTemplate = (
   return `<!doctype html>
 	<html>
 		<head>
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-			<title>Simple Transactional Email</title>
 			<style>
 	@media only screen and (max-width: 620px) {
 		table.body h1 {
@@ -140,8 +137,9 @@ const createEmailTemplate = (
 															</tr>
 														</tbody>
 													</table>
-													<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>
-													<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Good luck! Hope it works.</p>
+													<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+													If you run into problems, please contact with me at https://www.facebook.com/nguyenluhoangsang01</p>
+													<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Best regards, <br /> Nguyễn Lữ Hoàng Sang <br /> 0776689228 </p>
 												</td>
 											</tr>
 										</table>

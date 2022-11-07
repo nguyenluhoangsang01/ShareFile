@@ -4,11 +4,13 @@ import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { sendToast } from "../../utils/helpers";
 import Button from "../Button";
 
+const initialValue = {
+  emailFrom: "",
+  emailTo: "",
+};
+
 const EmailForm: FunctionComponent<{ id: string }> = ({ id }) => {
-  const [form, setForm] = useState({
-    emailFrom: "",
-    emailTo: "",
-  });
+  const [form, setForm] = useState(initialValue);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSendEmail = async () => {
@@ -25,6 +27,8 @@ const EmailForm: FunctionComponent<{ id: string }> = ({ id }) => {
       });
 
       setIsLoading(false);
+
+      setForm(initialValue);
 
       sendToast(data.message, <AiOutlineCheck className="text-green-600" />);
     } catch (error) {
